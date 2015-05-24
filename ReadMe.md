@@ -1,8 +1,12 @@
 These are the files for the course project for the JHU/Coursera Getting & Cleaning Data.
 
 run_analysis.R	The main analysis file for this project. (See below for more information)
+
 codebook.md		An attempt at a codebook for the variables found in run_analysis.R
-UCI HAR Dataset		A folder containing the data, originally from http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+UCI HAR Dataset		A folder containing the data, originally from 
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
 means.txt		The output of run_analysis.r - a tidy data set.
 
 From the original problem statement:
