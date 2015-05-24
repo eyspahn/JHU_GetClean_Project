@@ -9,13 +9,20 @@ The script "run_analysis.r" performs the following:
  The original data is in the folder "UCI HAR Dataset," which is available from http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
  There is a readme file in the folder which describes the variables.
 
- Most of the variables should be well-described in comments. Important intermediate variables:
+ Most of the variables should be well-described in comments. Important variables:
  
-data_set			Combined data set containing both test and training data. Result for step 1.
+data_set			 Combined data set containing both test and training data. Result for step 1.
+
 data_subset_i		The combined data set including the activity, mean and standard deviation data. Result for step 2.
+
 data_subset_ii		The combined data set in data_subset_i, with descriptive labels. Result for step 3, 4.
+
 inds_i				Indicies indicating rows containing mean and standard variables in the original data set
+
 data_subset_iii		Adds in subject information to data_subset_ii.	
+
 summarized_means	Create means based on grouped data
+
 summarized_means_ii	Add label for activity name to means
+
 reordered_means		This is the final tidy data set, as described in step 5.
