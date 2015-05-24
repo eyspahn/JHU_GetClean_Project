@@ -54,12 +54,11 @@ names(data_set)[562]<-"activitynumber"  #rename activity number column
 
 ## 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
 
-#find the feature labels where the data names contain "-mean" or "-std"
+#find the indicies of feature labels where the data names contain "-mean" or "-std"
 mean_meas<-grep("-mean", features[,2])
 std_meas<-grep("-std", features[,2])
-#combine the rows 
-#mean_std_inds<-sort(c(mean_meas, std_meas)
 
+#combine the row #s for mean & std
 inds<-sort(c(mean_meas,std_meas, 562)) #include 562 to cover the column of activity numbers
 #extract the data for mean & std variables & pull it into data_subset
 #using "i" to indicate intermediate (non-final) data set
@@ -70,7 +69,7 @@ data_subset_i<-data_set[,inds]
 ## 3. Uses descriptive activity names to name the activities in the data set
 #walking, walking_upstairs, etc
 #Add the data_activity code to the data & rename column name
-#merge reorders based on the activity lables--need to suppress that
+#merge reorders based on the activity lables--need to suppress that via sort
 
 data_subset_ii<-merge(data_subset_i, activity_labels, by.x="activitynumber",
                                by.y="V1", sort=FALSE) 
@@ -101,17 +100,17 @@ data_subset_tbldf<-tbl_df(data_subset_iii)
 
 #delete activity name, because summarise_each turns activity name into Nulls
 data_subset_tbldf<-mutate(data_subset_tbldf, activityname=NULL)
-
+#group the data by the activity
 grouped_data<-group_by(data_subset_tbldf, activitynumber, subjectID)
-
+#create means based on the grouped data
 summarized_means<-summarise_each(grouped_data, funs(mean))
 
 #add in the activityname back in
 summarized_means_ii<-merge(summarized_means, activity_labels, by.x="activitynumber",
                       by.y="V1", sort=FALSE)
-
+#Add the label for activity name back in
 names(summarized_means_ii)[82]<-"activityname"
-
+#Put it all together!
 reordered_means<-cbind(summarized_means_ii[1], summarized_means_ii[82],
                        summarized_means[2:81])
 
