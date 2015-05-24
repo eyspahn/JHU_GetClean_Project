@@ -1,5 +1,5 @@
 ## Getting & Cleaning Data, Coursera/JHU 
-## eyspahn, April 2015
+## eyspahn, May 2015
 ## Course Project
 ## 
 ## You should create one R script called run_analysis.R that does the following:
